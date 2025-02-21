@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', modifySrcAttributes);
 
   const observer = new MutationObserver((mutations) => {
     mutations.forEach((mutation) => {
-      if (mutation.type === 'childList') {
+      if (mutation.type === 'childList' || true) {
         mutation.addedNodes.forEach((node) => {
             // Check if node has src attribute 
             if(node.getAttribute('src') !== null)

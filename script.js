@@ -106,9 +106,8 @@ function addSectionIdToJs(jsCode, sectionId) {
 
 function loadPage(pageUrl) { 
   clearSections();
-  var pre = 'https://smthubakgale.github.io/ChinaCentre/'; 
-  
-  fetch(pre + 'pages/' + pageUrl)
+
+  fetch('pages/' + pageUrl)
   .then(response => {
     if (response.ok) {
       return response.text();
@@ -166,9 +165,7 @@ function loadPage(pageUrl) {
     });
     links.forEach(link => {
       if (link.getAttribute('rel') === 'stylesheet' && link.getAttribute('href').endsWith('.css')) {
-        var href = link.getAttribute('href').replace('../', '');
-        href = (href.indexOf('https://') == -1) ? pre + href : href;
-        
+        const href = link.getAttribute('href').replace('../', '');
         if(href){
           fetch(href)
           .then(response => {
@@ -219,8 +216,7 @@ function loadPage(pageUrl) {
       else if(src)
       { 
           src = src.replace('../', ''); 
-          src = (src.indexOf('https://') == -1) ? pre + src : src;
-        
+
           fetch(src)
           .then(response => {
             if (response.ok) {

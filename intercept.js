@@ -4,6 +4,13 @@ function intercept(url)
    var ur = url;
    console.log(ur);
 
+   if(ur.indexOf("https:") == -1 && ur.indexOf("http:") == -1)
+   {
+      ur = 'https://smthubakgale.github.io/ChinaCentre/' + ur; 
+   }
+
+   console.log(ur);
+
    return ur;
 }
 

@@ -14,24 +14,23 @@ function intercept(url)
    return ur;
 }
 
-// 0. Using DOM src attribute
-
+// 0. Using DOM src attribute 
 function modifySrcAttributes() {
     // Get all elements with a src attribute, excluding script tags
-    const elements = document.querySelectorAll('img[src], iframe[src], video[src], embed[src], source[src], track[src], audio[src]');
+    const elements = document.querySelectorAll('*[src]:not(script)');
 
-    elements.forEach(element => {
-        // Get the original src attribute
-        const originalSrc = element.src;
-
-        // Modify the src attribute 
-        const newSrc = intercept(originalSrc);
-
-        // Overwrite the src attribute with the modified one
-        element.src = newSrc;
+    elements.forEach(node => 
+    { 
+         console.log(node.outerHTML);
+         
+         const originalSrc = node.src; 
+         const newSrc = intercept(originalSrc); 
+         node.src = newSrc; 
     });
 }
- 
+
+modifySrcAttributes()
+
   const observer = new MutationObserver((mutations) => {
     mutations.forEach((mutation) => {
       if (mutation.type === 'childList') {
@@ -40,6 +39,11 @@ function modifySrcAttributes() {
             if(node.getAttribute('src') !== null)
             {
                console.log(node.outerHTML);
+               
+               const originalSrc = node.src; 
+               const newSrc = intercept(originalSrc); 
+               node.src = newSrc;
+               
             }
             //
         });
@@ -55,8 +59,7 @@ const config = {
 };
  
 observer.observe(document, config);
-
-
+ 
 // 1. Using the XMLHttpRequest object
 const originalOpen = XMLHttpRequest.prototype.open;
 

@@ -62,56 +62,6 @@ const config2 = {
 // Start observing the document
 observer2.observe(document, config2);
 
-
-// 0. Using DOM src attribute 
-function modifySrcAttributes() {
-    // Get all elements with a src attribute, excluding script tags
-    const elements = document.querySelectorAll('*[src]:not(script)');
-
-    elements.forEach(node => 
-    { 
-       /*
-         console.log(node.outerHTML);
-         
-         const originalSrc = node.src; 
-         const newSrc = intercept(originalSrc); 
-         node.src = newSrc; 
-         */
-    });
-}
-
-modifySrcAttributes();
-document.addEventListener('DOMContentLoaded', modifySrcAttributes);
-
-  const observer3 = new MutationObserver((mutations) => {
-    mutations.forEach((mutation) => {
-      if (mutation.type === 'childList' || true) {
-        mutation.addedNodes.forEach((node) => {
-            // Check if node has src attribute  
-            if(node.nodeType === Node.ELEMENT_NODE && node.getAttribute('src') !== null)
-            {
-               console.log(node.outerHTML);
-               /* 
-               const originalSrc = node.src; 
-               const newSrc = intercept(originalSrc); 
-               node.src = newSrc;
-               */
-               
-            }
-            //
-        });
-      }
-    });
-  });
- 
-const config = {
-    childList: true,
-    subtree: true,
-    attributes: true,
-    attributeFilter: ['src']
-};
- 
-observer3.observe(document, config);
  
 // 1. Using the XMLHttpRequest object
 const originalOpen = XMLHttpRequest.prototype.open;

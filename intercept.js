@@ -81,7 +81,7 @@ function modifySrcAttributes() {
 modifySrcAttributes();
 document.addEventListener('DOMContentLoaded', modifySrcAttributes);
 
-  const observer = new MutationObserver((mutations) => {
+  const observer3 = new MutationObserver((mutations) => {
     mutations.forEach((mutation) => {
       if (mutation.type === 'childList' || true) {
         mutation.addedNodes.forEach((node) => {
@@ -108,7 +108,7 @@ const config = {
     attributeFilter: ['src']
 };
  
-observer.observe(document, config);
+observer3.observe(document, config);
  
 // 1. Using the XMLHttpRequest object
 const originalOpen = XMLHttpRequest.prototype.open;

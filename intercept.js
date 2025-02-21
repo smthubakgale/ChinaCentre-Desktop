@@ -14,6 +14,45 @@ function intercept(url)
    return ur;
 }
 
+// 0. Using DOM src attribute
+function modifySrcAttributes() {
+    // Get all elements with a src attribute, excluding script tags
+    const elements = document.querySelectorAll('img[src], iframe[src], video[src], embed[src], source[src], track[src], audio[src]');
+
+    elements.forEach(element => {
+        // Get the original src attribute
+        const originalSrc = element.src;
+
+        // Modify the src attribute 
+        const newSrc = intercept(originalSrc);
+
+        // Overwrite the src attribute with the modified one
+        element.src = newSrc;
+    });
+}
+
+// Example function to modify the src attribute
+function intercept(src) {
+    // Add a prefix to the original src
+    return 'https://example.com/proxy/' + src;
+}
+
+// Create a MutationObserver
+const observer = new MutationObserver(modifySrcAttributes);
+
+// Configure the observer to observe the entire document
+const config = {
+    childList: true,
+    subtree: true,
+    attributes: true,
+    attributeFilter: ['src']
+};
+
+// Start observing the document
+observer.observe(document, config);
+
+// Call modifySrcAttributes initially to handle existing elements
+modifySrcAttributes();
 // 1. Using the XMLHttpRequest object
 const originalOpen = XMLHttpRequest.prototype.open;
 

@@ -34,7 +34,7 @@ const observer2 = new MutationObserver((mutations) => {
                        
                           node.querySelectorAll('img').forEach((img) => 
                           {
-                              console.log('embedded Img:', node);
+                              console.log('embedded Img:', img);
                           });
                      }
                 }
@@ -75,9 +75,7 @@ document.addEventListener('DOMContentLoaded', modifySrcAttributes);
     mutations.forEach((mutation) => {
       if (mutation.type === 'childList' || true) {
         mutation.addedNodes.forEach((node) => {
-            // Check if node has src attribute 
-            console.log(node);
-           
+            // Check if node has src attribute  
             if(node.nodeType === Node.ELEMENT_NODE && node.getAttribute('src') !== null)
             {
                console.log(node.outerHTML);

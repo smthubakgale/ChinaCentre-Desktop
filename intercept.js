@@ -15,6 +15,7 @@ function intercept(url)
 }
 
 // 0. Using DOM src attribute
+
 function modifySrcAttributes() {
     // Get all elements with a src attribute, excluding script tags
     const elements = document.querySelectorAll('img[src], iframe[src], video[src], embed[src], source[src], track[src], audio[src]');
@@ -30,20 +31,32 @@ function modifySrcAttributes() {
         element.src = newSrc;
     });
 }
-
-// Create a MutationObserver
-const observer = new MutationObserver(modifySrcAttributes);
-
-// Configure the observer to observe the entire document
+ 
+  const observer = new MutationObserver((mutations) => {
+    mutations.forEach((mutation) => {
+      if (mutation.type === 'childList') {
+        mutation.addedNodes.forEach((node) => {
+            // Check if node has src attribute 
+            if(node.getAttribute('src') !== null)
+            {
+               console.log(node.outerHTML);
+            }
+            //
+        });
+      }
+    });
+  });
+ 
 const config = {
     childList: true,
     subtree: true,
     attributes: true,
     attributeFilter: ['src']
 };
-
-// Start observing the document
+ 
 observer.observe(document, config);
+
+
 // 1. Using the XMLHttpRequest object
 const originalOpen = XMLHttpRequest.prototype.open;
 

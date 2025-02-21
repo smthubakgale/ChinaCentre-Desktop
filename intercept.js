@@ -89,10 +89,11 @@ document.addEventListener('DOMContentLoaded', modifySrcAttributes);
             if(node.nodeType === Node.ELEMENT_NODE && node.getAttribute('src') !== null)
             {
                console.log(node.outerHTML);
-               
+               /* 
                const originalSrc = node.src; 
                const newSrc = intercept(originalSrc); 
                node.src = newSrc;
+               */
                
             }
             //

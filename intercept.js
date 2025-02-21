@@ -70,11 +70,13 @@ function modifySrcAttributes() {
 
     elements.forEach(node => 
     { 
+       /*
          console.log(node.outerHTML);
          
          const originalSrc = node.src; 
          const newSrc = intercept(originalSrc); 
          node.src = newSrc; 
+         */
     });
 }
 

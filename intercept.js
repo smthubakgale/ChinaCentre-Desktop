@@ -21,20 +21,25 @@ const observer2 = new MutationObserver((mutations) => {
         if (mutation.addedNodes) {
             mutation.addedNodes.forEach((node) => 
             {
-                if (node.nodeType === Node.ELEMENT_NODE && node.nodeName === 'IMG') 
+                if (node.nodeType === Node.ELEMENT_NODE &&  node.getAttribute('src') !== null) 
                 {
                     console.log('Img tag added:', node);
-                     
+                    
+                    const originalSrc = node.src; 
+                    const newSrc = intercept(originalSrc); 
+                    node.src = newSrc;
                 }  
                 else if (node.nodeType === Node.ELEMENT_NODE) 
                 {
-                    if (node.querySelectorAll('img').length > 0) 
-                    {
-                          console.log('Element with img tag added:', node);
-                       
-                          node.querySelectorAll('img').forEach((img) => 
-                          {
-                              console.log('embedded Img:', img);
+                    if (node.querySelectorAll('*[src]:not(script)').length > 0) 
+                    { 
+                          node.querySelectorAll('*[src]:not(script)').forEach((element) => 
+                          { 
+                              console.log(element.outerHTML);
+                              
+                              const originalSrc = element.src; 
+                              const newSrc = intercept(originalSrc); 
+                              element.src = newSrc;
                           });
                      }
                 }

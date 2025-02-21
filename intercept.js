@@ -22,29 +22,29 @@ function intercept(url)
 // Create a MutationObserver
 const observer2 = new MutationObserver((mutations) => {
     mutations.forEach((mutation) => {
-        // Check if the added node is an img tag or contains an img tag
+      
         if (mutation.addedNodes) {
             mutation.addedNodes.forEach((node) => 
             {
-                if (node.nodeType === Node.ELEMENT_NODE &&  node.getAttribute('src') !== null && node.nodeName !== 'SCRIPT') 
-                {
-                    console.log('Img tag added:', node);
-                    
+                if (node.nodeType === Node.ELEMENT_NODE && node.getAttribute('ext') != "true" && node.getAttribute('src') !== null && node.nodeName !== 'SCRIPT') 
+                { 
                     const originalSrc = node.src; 
                     const newSrc = intercept(originalSrc); 
                     node.src = newSrc;
                 }  
                 else if (node.nodeType === Node.ELEMENT_NODE) 
                 {
-                    if (node.querySelectorAll('*[src]:not(script)').length > 0) 
+                    if (node.querySelectorAll('*[src]').length > 0) 
                     { 
-                          node.querySelectorAll('*[src]:not(script)').forEach((element) => 
+                          node.querySelectorAll('*[src]').forEach((element) => 
                           { 
-                              console.log(element.outerHTML);
-                              
-                              const originalSrc = element.src; 
-                              const newSrc = intercept(originalSrc); 
-                              element.src = newSrc;
+
+                             if(element.getAttribute('ext') != "true")
+                             {
+                                 const originalSrc = element.src; 
+                                 const newSrc = intercept(originalSrc); 
+                                 element.src = newSrc;
+                             } 
                           });
                      }
                 }

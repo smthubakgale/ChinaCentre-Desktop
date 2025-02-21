@@ -19,15 +19,24 @@ const observer2 = new MutationObserver((mutations) => {
     mutations.forEach((mutation) => {
         // Check if the added node is an img tag or contains an img tag
         if (mutation.addedNodes) {
-            mutation.addedNodes.forEach((node) => {
-                if (node.nodeName === 'IMG') {
+            mutation.addedNodes.forEach((node) => 
+            {
+                if (node.nodeType === Node.ELEMENT_NODE && node.nodeName === 'IMG') 
+                {
                     console.log('Img tag added:', node);
                      
-                } else if (node.querySelectorAll('img').length > 0) {
-                    console.log('Element with img tag added:', node);
-                    node.querySelectorAll('img').forEach((img) => {
-                        console.log('embedded Img:', node);
-                    });
+                }  
+                else if (node.nodeType === Node.ELEMENT_NODE) 
+                {
+                    if (node.querySelectorAll('img').length > 0) 
+                    {
+                          console.log('Element with img tag added:', node);
+                       
+                          node.querySelectorAll('img').forEach((img) => 
+                          {
+                              console.log('embedded Img:', node);
+                          });
+                     }
                 }
             });
         }
@@ -67,7 +76,9 @@ document.addEventListener('DOMContentLoaded', modifySrcAttributes);
       if (mutation.type === 'childList' || true) {
         mutation.addedNodes.forEach((node) => {
             // Check if node has src attribute 
-            if(node.getAttribute('src') !== null)
+            console.log(node);
+           
+            if(node.nodeType === Node.ELEMENT_NODE && node.getAttribute('src') !== null)
             {
                console.log(node.outerHTML);
                

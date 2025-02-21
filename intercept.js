@@ -29,7 +29,8 @@ function modifySrcAttributes() {
     });
 }
 
-modifySrcAttributes()
+modifySrcAttributes();
+document.addEventListener('DOMContentLoaded', modifySrcAttributes);
 
   const observer = new MutationObserver((mutations) => {
     mutations.forEach((mutation) => {

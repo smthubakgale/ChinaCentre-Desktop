@@ -35,7 +35,7 @@ self.addEventListener('fetch', function(event) {
 
 // 4. Using a library like axios
 
-if(axios)
+if(typeof axios !== 'undefined')
 {
     axios.interceptors.request.use(function(config) {
         // Intercept and modify the URL

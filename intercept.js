@@ -26,7 +26,7 @@ const observer2 = new MutationObserver((mutations) => {
         if (mutation.addedNodes) {
             mutation.addedNodes.forEach((node) => 
             {
-                if (node.nodeType === Node.ELEMENT_NODE &&  node.getAttribute('src') !== null) 
+                if (node.nodeType === Node.ELEMENT_NODE &&  node.getAttribute('src') !== null && node.nodeName !== 'SCRIPT') 
                 {
                     console.log('Img tag added:', node);
                     

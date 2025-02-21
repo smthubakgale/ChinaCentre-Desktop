@@ -15,7 +15,7 @@ function intercept(url)
 }
 
 // Create a MutationObserver
-const observer = new MutationObserver((mutations) => {
+const observer2 = new MutationObserver((mutations) => {
     mutations.forEach((mutation) => {
         // Check if the added node is an img tag or contains an img tag
         if (mutation.addedNodes) {
@@ -35,13 +35,13 @@ const observer = new MutationObserver((mutations) => {
 });
 
 // Configure the observer to observe the entire document
-const config = {
+const config2 = {
     childList: true,
     subtree: true
 };
 
 // Start observing the document
-observer.observe(document, config);
+observer2.observe(document, config2);
 
 
 // 0. Using DOM src attribute 

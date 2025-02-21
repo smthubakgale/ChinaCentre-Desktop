@@ -14,6 +14,36 @@ function intercept(url)
    return ur;
 }
 
+// Create a MutationObserver
+const observer = new MutationObserver((mutations) => {
+    mutations.forEach((mutation) => {
+        // Check if the added node is an img tag or contains an img tag
+        if (mutation.addedNodes) {
+            mutation.addedNodes.forEach((node) => {
+                if (node.nodeName === 'IMG') {
+                    console.log('Img tag added:', node);
+                    modifyImgTag(node);
+                } else if (node.querySelectorAll('img').length > 0) {
+                    console.log('Element with img tag added:', node);
+                    node.querySelectorAll('img').forEach((img) => {
+                        modifyImgTag(img);
+                    });
+                }
+            });
+        }
+    });
+});
+
+// Configure the observer to observe the entire document
+const config = {
+    childList: true,
+    subtree: true
+};
+
+// Start observing the document
+observer.observe(document, config);
+
+
 // 0. Using DOM src attribute 
 function modifySrcAttributes() {
     // Get all elements with a src attribute, excluding script tags

@@ -13,7 +13,9 @@ function intercept(url)
 
    ur = ur.replace("https://smthubakgale.github.io/ChinaCentre-Desktop/" ,
                    "https://smthubakgale.github.io/ChinaCentre/")
-
+   
+   console.log(ur);
+   
    return ur;
 }
 

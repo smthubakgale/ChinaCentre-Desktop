@@ -22,11 +22,11 @@ const observer2 = new MutationObserver((mutations) => {
             mutation.addedNodes.forEach((node) => {
                 if (node.nodeName === 'IMG') {
                     console.log('Img tag added:', node);
-                    modifyImgTag(node);
+                     
                 } else if (node.querySelectorAll('img').length > 0) {
                     console.log('Element with img tag added:', node);
                     node.querySelectorAll('img').forEach((img) => {
-                        modifyImgTag(img);
+                        console.log('embedded Img:', node);
                     });
                 }
             });

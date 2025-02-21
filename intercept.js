@@ -31,12 +31,6 @@ function modifySrcAttributes() {
     });
 }
 
-// Example function to modify the src attribute
-function intercept(src) {
-    // Add a prefix to the original src
-    return 'https://example.com/proxy/' + src;
-}
-
 // Create a MutationObserver
 const observer = new MutationObserver(modifySrcAttributes);
 
@@ -50,9 +44,6 @@ const config = {
 
 // Start observing the document
 observer.observe(document, config);
-
-// Call modifySrcAttributes initially to handle existing elements
-modifySrcAttributes();
 // 1. Using the XMLHttpRequest object
 const originalOpen = XMLHttpRequest.prototype.open;
 

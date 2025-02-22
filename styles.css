@@ -19,7 +19,7 @@ body {
   position: sticky;
   top: 0;
   z-index: 1000;
-  background-color: #ffa07a;
+  background-color: #EB1110;
   padding: 1em;
   text-align: center;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -133,7 +133,7 @@ body {
 }
 
 .side-nav .docs-nav a:hover {
-  color: #ffa07a;
+  color: #EB1110;
 }
 
 .side-nav .docs-nav input[type="checkbox"] {
@@ -307,7 +307,7 @@ body {
     z-index: 1000;
   }
     .side-nav nav{
-      background-color: #ffa07a;
+      background-color: #EB1110;
       padding: 0;
       width: 80%;
       max-width: 300px;
@@ -364,7 +364,7 @@ body {
     z-index: 1000;
   }
     .side-nav nav{
-      background-color: #ffa07a;
+      background-color: #EB1110;
       padding: 0px;
       width: 80%;
       max-width: 300px;
@@ -435,13 +435,13 @@ a {
 }
 
 a:hover {
-  color: #ffa07a;
+  color: #EB1110;
 }
 
 /* Buttons */
 
 button {
-  background-color: #ffa07a;
+  background-color: #EB1110;
   color: #fff;
   border: none;
   padding: 0.5em 1em;
@@ -468,7 +468,7 @@ input[type="password"] {
 }
 
 button[type="submit"] {
-  background-color: #ffa07a;
+  background-color: #EB1110;
   color: #fff;
   border: none;
   padding: 0.5em 1em;
@@ -541,7 +541,7 @@ th {
 
 .close-button {
   float: right;
-  background-color: #ffa07a;
+  background-color: #EB1110;
   color: #fff;
   border: none;
   padding: 0.5em 1em;
@@ -573,7 +573,7 @@ th {
 }
 
 .accordion:hover {
-  background-color: #ffa07a;
+  background-color: #EB1110;
   color: #fff;
 }
 
@@ -607,7 +607,7 @@ th {
 
 .mobile-nav-toggle {
   display: none;
-  background-color: #ffa07a;
+  background-color: #EB1110;
   color: #fff;
   border: none;
   padding: 0.5em 1em;
@@ -635,7 +635,7 @@ th {
 }
 
 .mobile-nav a:hover {
-  color: #ffa07a;
+  color: #EB1110;
 }
 
 /* Utilities */
@@ -799,7 +799,7 @@ th {
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #ffa07a;
+  background-color: #EB1110;
   border-radius: 10px;
 }
 

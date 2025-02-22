@@ -24,7 +24,74 @@ const alertCloseButtons = document.querySelectorAll('.alert .close-button');
 const asideToggle = document.querySelector('.aside-toggle'); 
 
 // Add event listeners
+function observeLinkTags(className = '', eventType = 'click', callback = () => {}) 
+{
+  // Create a MutationObserver instance
+  const observer = new MutationObserver((mutations) => {
+    mutations.forEach((mutation) => {
+      if (mutation.type === 'childList') {
+        mutation.addedNodes.forEach((node) => {
+          // Check if the added node or its children/sub-children contain the specific class
+          checkForClass(node, className);
+        });
+      }
+    });
+  });
+
+  // Function to check if a node or its children/sub-children contain a specific class
+  function checkForClass(node, className) {
+    // Check if the node itself contains the specific class
+    if (node.classList && node.classList.contains(className)) { 
+      // Add the callback event listener to the new element
+      node.addEventListener(eventType, ()=>{
+         callback(node , true);
+      });
+    }
+  
+    // Recursively check the children and sub-children of the node
+    if(node.children){
+      Array.from(node.children).forEach((child) => {
+        checkForClass(child, className);
+      }); 
+    }
+  }
+  
+  // Configure the observer to watch for childList changes
+  const config = { childList: true, subtree: true };
+  
+  // Start observing the document body
+  observer.observe(document.body, config);
+}
+
+// 
+
+function handleNavLinkClick(event , direct = false) {
+
+  if(!direct){ event.preventDefault(); } 
+
+  let target = event.target;
+  
+  // If the target is an <i> element, get its parent
+  if(direct){
+    target = event;
+  }
+  if (target.tagName === 'I') {
+    target = target.parentNode;
+  } 
+
+  const targetSection = target.getAttribute('href').substring(1); 
+  var fill = target.getAttribute('fill');
+  fill = fill || 'none';
+  var queries = target.getAttribute('queries');
+  queries = (queries) ? '&queries=' + btoa(queries) : '';
+  
+  window.location.href = '?page=' + targetSection + '&fill=' + fill + queries ;
+}
+//
+// Add event listeners
 navLinks.forEach(link => link.addEventListener('click', handleNavLinkClick));
+observeLinkTags('nav-link', 'click', handleNavLinkClick);
+
 subNavTriggers.forEach(trigger => trigger.addEventListener('mouseover', handleSubNavTrigger));
 subNavTriggers.forEach(trigger => trigger.addEventListener('mouseout', handleSubNavTrigger)); 
 accordionTriggers.forEach(trigger => trigger.addEventListener('click', handleAccordionTrigger));
@@ -39,63 +106,7 @@ function clearSections() {
   });
 }
 
-function addSectionId(cssCode, sectionId) {
 
-    const selectors = cssCode.match(/([^{]+)\s*\{/g);
-    if (selectors) {
-        selectors.forEach(selector => {
-
-            var mat = selector.split('}');
-            var m1  = selector.indexOf("}") == -1 ? '' : selector.substring(0 , selector.lastIndexOf('}'));
-            var m2 = selector.indexOf("}") == -1 ? '' : selector.slice(selector.lastIndexOf('}') + 1);
-
-           if(!(m1 == '' && m2 ==  '')){
-             mat = [m1 , m2];
-           }
-      
-            var a = (mat.length == 2) ? mat[0] : '';
-            var b = (mat.length == 2) ? mat[1] : mat[0];
-
-            if(mat.length == 2){ a += '\n }'; }
-      
-            var c = b.split('\n');
-            var d = '';
-
-            c.forEach((s)=>
-              {
-                  if(s.length == 0){
-                    d += '\n';
-                  }
-                  else if(s.indexOf('body') == -1 && s.indexOf('/*') == -1) 
-                  {
-                    var e = s.split(',');
-                    
-                    e.forEach((s2 , k2)=>
-                    { 
-                       if(s2.indexOf('@media') == -1){
-                          d += `#${sectionId} ` + s2; 
-                       }
-                      else {
-                        d += s2;
-                      }
-
-                       if (e.length > 1 && k2 != e.length - 1) {
-                          d += ',';
-                       }
-                    })
-                  }
-                  else{
-                    d += s;
-                  }
-              });
-
-            const newSelector = (a + d).replace('body', `#${sectionId}`);
-            cssCode = cssCode.replace(selector, newSelector);
-        });
-    }
-  
-    return cssCode;
-}
 function addSectionIdToJs(jsCode, sectionId) {
   // Use regular expressions to find and modify query selectors
   return   jsCode.replace(/(document\.querySelector|document\.querySelectorAll|jQuery|[$])\s*\(\s*["'](#|\.|)([a-zA-Z0-9_-]+)["']\s*\)/g, (match, p1, p2, p3) => {
@@ -104,10 +115,10 @@ function addSectionIdToJs(jsCode, sectionId) {
 }
 
 
-function loadPage(pageUrl) { 
+function loadPage(pageUrl , queries) { 
   clearSections();
 
-  fetch('pages/' + pageUrl)
+  fetch('pages/' + pageUrl) 
   .then(response => {
     if (response.ok) {
       return response.text();
@@ -150,24 +161,21 @@ function loadPage(pageUrl) {
     const sectionId = `${pageName}`;
     const section = document.getElementById(sectionId);
 
-    // Add CSS
+    // Add CSS  
     styles.forEach(style =>{
        const htm = style.innerHTML; 
-       if(htm){
-         let css = htm; 
-
-         const modifiedCss = addSectionId(css.trim(), sectionId);
-
+       if(css){  
          const newStyle = document.createElement('style');
-         newStyle.textContent = modifiedCss;
-         section.appendChild(newStyle);
+         newStyle.setAttribute('scoped', '');
+         newStyle.textContent = css.replace('body', `#${sectionId}`);
+         section.prepend(newStyle);
        }
     });
     links.forEach(link => {
       if (link.getAttribute('rel') === 'stylesheet' && link.getAttribute('href').endsWith('.css')) {
         const href = link.getAttribute('href').replace('../', '');
         if(href){
-          fetch(href)
+          fetch(href) 
           .then(response => {
             if (response.ok) {
               return response.text();
@@ -175,15 +183,12 @@ function loadPage(pageUrl) {
               throw new Error(`Error: ${response.status}`);
             }
           })
-          .then(htm =>
-          {
-              let css = htm; 
-    
-              const modifiedCss = addSectionId(css.trim(), sectionId);
-
+          .then(css =>
+          { 
               const newStyle = document.createElement('style');
-              newStyle.textContent = modifiedCss;
-              section.appendChild(newStyle);
+              newStyle.setAttribute('scoped', '');
+              newStyle.textContent = css.replace('body', `#${sectionId}`); //modifiedCss;
+              section.prepend(newStyle);
           })
           .catch(error => console.error(`Error loading CSS: ${error}`));
           
@@ -249,8 +254,25 @@ function getQueryParameter(name) {
     const urlParams = new URLSearchParams(window.location.search);
     return urlParams.get(name);
 }
+
+window.getQueryParams = function (url) {
+  const params = new URLSearchParams(url.split('?')[1]);
+  const queryParams = {}; 
+  
+  for (const [key, value] of params) {
+    queryParams[key] = value; 
+  } 
+  
+  return queryParams;
+}
 // Load the page dynamically based on the query parameter
 const page = getQueryParameter('page');
+const fill = getQueryParameter('fill');
+var queries = getQueryParameter('queries'); 
+
+const ur2 = "https://example.com" + ( (queries) ? '?' + atob(queries) : '');
+window.queryParam = getQueryParams(ur2);
+
 if (page) {
     loadPage(page + '.html');
 } else {
@@ -258,27 +280,36 @@ if (page) {
     loadPage('home');
 }
 
-function handleNavLinkClick(event) {
-  event.preventDefault();
+function handleNavLinkClick(event , direct = false) {
+
+  if(!direct){ event.preventDefault(); } 
 
   let target = event.target;
   
   // If the target is an <i> element, get its parent
+  if(direct){
+    target = event;
+  }
   if (target.tagName === 'I') {
     target = target.parentNode;
-  }
-  
+  } 
+
   const targetSection = target.getAttribute('href').substring(1); 
-  window.location.href = '?page=' + targetSection ;
+  var fill = target.getAttribute('fill');
+  fill = fill || 'none';
+  var queries = target.getAttribute('queries');
+  queries = (queries) ? '&queries=' + btoa(queries) : '';
+  
+  window.location.href = '?page=' + targetSection + '&fill=' + fill + queries ;
 }
 
 function handleSubNavTrigger(event) {
-const subNav = event.target.querySelector('.sub-nav');
-if (event.type === 'mouseover' && subNav) {
-subNav.style.display = 'block';
-} else if(subNav) {
-subNav.style.display = 'none';
-}
+  const subNav = event.target.querySelector('.sub-nav');
+  if (event.type === 'mouseover' && subNav) {
+  subNav.style.display = 'block';
+  } else if(subNav) {
+  subNav.style.display = 'none';
+  }
 }
 
 function handleAccordionTrigger(event) {

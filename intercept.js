@@ -47,7 +47,7 @@ const observer2 = new MutationObserver((mutations) => {
                 }
                else if (node.nodeType === Node.ELEMENT_NODE  && node.getAttribute('ext') != "true" && node.nodeName !== 'STYLE') 
                {
-                   const originalSrc = element.innerHTML; 
+                   const originalSrc = node.innerHTML; 
                    console.log(originalSrc) ;
                } 
                 else if (node.nodeType === Node.ELEMENT_NODE && node.querySelectorAll('style').length > 0) 

@@ -97,8 +97,12 @@ body {
   position: absolute;
   top: 100%;
   left: 0;
-  z-index: 1;
-  min-width: 250px; 
+  z-index: 1; 
+  min-width: 200px;
+}
+
+.top-nav .d-user .dropdown-menu {
+   margin-left: -180px; 
 }
 
 .top-nav .dropdown-menu li {

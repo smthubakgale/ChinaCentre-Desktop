@@ -52,16 +52,18 @@ body {
   color: #ccc;
 }
 
-.top-nav .pricing-link{
-  margin-right: auto;
-}
-.top-nav .about-link{
+.top-nav .search-link {
   margin-left: auto;
 }
 
 .top-nav .search-link input{
    border-radius: 4px; 
 }
+
+.top-nav .about-link{
+  margin-left: auto;
+}
+
 .top-nav .home-link2{
   display:none;
 }

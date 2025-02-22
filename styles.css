@@ -57,10 +57,10 @@ body {
 }
 
 .top-nav .search-link input{
-   padding:4px;
-   margin-top:-4px; 
-   margin-bottom:-4px;
-   min-width:35vw; 
+   padding:8px; 
+   margin-top:-8px; 
+   margin-bottom:-8px; 
+   min-width:30vw;
    border-radius:15px; 
    outline:none; 
    border:solid 1.2px;

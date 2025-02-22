@@ -110,6 +110,10 @@ body {
   margin-bottom: 10px;
 }
 
+.top-nav .dropdown-menu i {
+  margin-right: auto; 
+}
+
 .top-nav .dropdown-menu a {
   color: white;
   text-align: left; 

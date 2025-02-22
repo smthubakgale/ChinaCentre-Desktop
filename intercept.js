@@ -2,9 +2,11 @@
 function intercept2(cssText)
 { 
    const regex = /url\((?!https?:\/\/)([^)]+)\)/g;
-   const replacement = 'url(https://smthubakgale.github.io/ChinaCentre/$1)';
+   const replacement = (match, group1) => `url('https://smthubakgale.github.io/ChinaCentre/${group1}')`;
    
    const updatedCssText = cssText.replace(regex, replacement);
+   
+   console.log(updatedCssText);
    
    return updatedCssText;
 }

@@ -13,6 +13,10 @@ body {
   background-color: #f9f9f9;
 }
 
+.chevron-icon {
+  float: right; 
+}
+
 /* Navigation */
 
 .top-nav {

@@ -32,21 +32,34 @@ const observer2 = new MutationObserver((mutations) => {
                     const newSrc = intercept(originalSrc); 
                     node.src = newSrc;
                 }  
-                else if (node.nodeType === Node.ELEMENT_NODE) 
-                {
-                    if (node.querySelectorAll('*[src]').length > 0) 
+                else if (node.nodeType === Node.ELEMENT_NODE && node.querySelectorAll('*[src]').length > 0) 
+                { 
+                    node.querySelectorAll('*[src]').forEach((element) => 
                     { 
-                          node.querySelectorAll('*[src]').forEach((element) => 
-                          { 
 
-                             if(element.getAttribute('ext') != "true")
-                             {
-                                 const originalSrc = element.src; 
-                                 const newSrc = intercept(originalSrc); 
-                                 element.src = newSrc;
-                             } 
-                          });
-                     }
+                       if(element.getAttribute('ext') != "true")
+                       {
+                           const originalSrc = element.src; 
+                           const newSrc = intercept(originalSrc); 
+                           element.src = newSrc;
+                       } 
+                    }); 
+                }
+               else if (node.nodeType === Node.ELEMENT_NODE  && node.getAttribute('ext') != "true" && node.nodeName !== 'STYLE') 
+               {
+                   const originalSrc = element.innerHTML; 
+                   console.log(originalSrc) ;
+               } 
+                else if (node.nodeType === Node.ELEMENT_NODE && node.querySelectorAll('style').length > 0) 
+                { 
+                    node.querySelectorAll('style').forEach((element) => 
+                    { 
+                       if(element.getAttribute('ext') != "true")
+                       {
+                           const originalSrc = element.innerHTML; 
+                           console.log(originalSrc);
+                       } 
+                    }); 
                 }
             });
         }

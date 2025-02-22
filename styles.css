@@ -181,13 +181,13 @@ body {
   margin-bottom: 5px;
 }
 /* Main Content */
+
 .main-content {
   flex-basis: 0;
   flex-grow: 1;
   margin-left: 20px;
   padding: 1em;
   padding-top: 0px;
-  flex:1;
 }
 
 /* Sections */
@@ -309,7 +309,7 @@ body {
 
 /* Responsive Design */
 /* Mobile Landscape or Tablet */
-@media only screen and (min-width: 767px) {
+@media only screen and (max-width: 768px) {
   .main-content {
     width:100%;
   }
@@ -357,7 +357,7 @@ body {
   }
 }
 /* Mobile Portrait */
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 480px) {
   .main-content {
     width:100%;
   }
@@ -419,7 +419,7 @@ body {
 }
 
 /* Desktop */
-@media (min-width: 767px) {
+@media (min-width: 769px) {
   .side-nav {
     position: sticky;
     top: 60px; /* Adjust based on top nav height */

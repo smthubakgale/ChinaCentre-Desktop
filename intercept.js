@@ -2,19 +2,19 @@
 function intercept(url)
 {
    var ur = url;
-   console.log(ur);
+   //console.log(ur);
 
    if(ur.indexOf("https:") == -1 && ur.indexOf("http:") == -1)
    {
       ur = 'https://smthubakgale.github.io/ChinaCentre/' + ur; 
    }
 
-   console.log(ur);
+   //console.log(ur);
 
    ur = ur.replace("https://smthubakgale.github.io/ChinaCentre-Desktop/" ,
                    "https://smthubakgale.github.io/ChinaCentre/")
    
-   console.log(ur);
+   //console.log(ur);
    
    return ur;
 }

@@ -1,4 +1,14 @@
 
+function intercept2(cssText)
+{ 
+   const regex = /url\((?!https?:\/\/)([^)]+)\)/g;
+   const replacement = 'url(https://smthubakgale.github.io/ChinaCentre/$1)';
+   
+   const updatedCssText = cssText.replace(regex, replacement);
+   
+   return updatedCssText;
+}
+
 function intercept(url)
 {
    var ur = url;
@@ -48,7 +58,10 @@ const observer2 = new MutationObserver((mutations) => {
                else if (node.nodeType === Node.ELEMENT_NODE  && node.getAttribute('ext') != "true" && node.nodeName == 'STYLE') 
                {
                    const originalSrc = node.innerHTML; 
-                   console.log(originalSrc) ;
+                   console.log(originalSrc) ; 
+                   const newSrc = intercept2(originalSrc); 
+                   console.log(newSrc) ; 
+                   node.innerHTML = newSrc;
                } 
                 else if (node.nodeType === Node.ELEMENT_NODE && node.querySelectorAll('style').length > 0) 
                 { 
@@ -58,6 +71,9 @@ const observer2 = new MutationObserver((mutations) => {
                        {
                            const originalSrc = element.innerHTML; 
                            console.log(originalSrc);
+                           const newSrc = intercept2(originalSrc); 
+                           console.log(newSrc) ; 
+                           element.innerHTML = newSrc;
                        } 
                     }); 
                 }

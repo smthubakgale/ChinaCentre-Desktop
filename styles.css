@@ -64,6 +64,7 @@ body {
    border-radius:15px; 
    outline:none; 
    border:solid 1.2px;
+   text-align: center; 
 }
 
 .top-nav .about-link{

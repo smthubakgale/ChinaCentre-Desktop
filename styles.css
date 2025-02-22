@@ -107,11 +107,11 @@ body {
 }
 
 .top-nav .dropdown-menu a {
-  color: #F7F7F7;
+  color: white;
 }
 
 .top-nav .dropdown-menu a:hover {
-  color: #F7F7F7; /* no change */
+  color: #EB1110; 
 }
 
 .top-nav .dropdown:hover .dropdown-menu {

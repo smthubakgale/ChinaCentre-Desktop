@@ -277,7 +277,7 @@ if (page) {
     loadPage(page + '.html');
 } else {
     // Load the default page if no query parameter is provided
-    loadPage('dashboard');
+    loadPage('register');
 }
 
 function handleNavLinkClick(event , direct = false) {

@@ -285,7 +285,9 @@ if (page) {
     window.location.href = '?page=register&fill=screen' ;
 }
 
-document.querySelector('body').style.display = 'unset';
+setTimeout(()=>{
+  document.querySelector('body').style.display = 'unset';
+} , 400);
 
 function handleNavLinkClick(event , direct = false) {
 

@@ -273,6 +273,11 @@ var queries = getQueryParameter('queries');
 const ur2 = "https://example.com" + ( (queries) ? '?' + atob(queries) : '');
 window.queryParam = getQueryParams(ur2);
 
+if(fill == "screen"){
+   document.querySelector('.top-nav').style.display = 'none';
+   document.querySelector('.side-nav').style.display = 'none';
+}
+
 if (page) {
     loadPage(page + '.html');
 } else {

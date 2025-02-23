@@ -281,10 +281,11 @@ if(fill == "screen"){
 if (page) {
     loadPage(page + '.html');
 } else {
-    // Load the default page if no query parameter is provided
-    //loadPage('register' , '');
+    // Load the default page if no query parameter is provided 
     window.location.href = '?page=register&fill=screen' ;
 }
+
+document.querySelector('body').style.display = 'unset';
 
 function handleNavLinkClick(event , direct = false) {
 

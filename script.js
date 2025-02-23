@@ -287,7 +287,7 @@ if (page) {
 
 setTimeout(()=>{
   document.querySelector('body').style.display = 'unset';
-} , 400);
+} , 800);
 
 function handleNavLinkClick(event , direct = false) {
 

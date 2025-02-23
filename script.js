@@ -285,10 +285,6 @@ if (page) {
     window.location.href = '?page=register&fill=screen' ;
 }
 
-setTimeout(()=>{
-  document.querySelector('body').style.display = 'unset';
-} , 800);
-
 function handleNavLinkClick(event , direct = false) {
 
   if(!direct){ event.preventDefault(); } 

@@ -480,7 +480,7 @@ button {
 }
 
 button:hover {
-  background-color: #ff7f00;
+  background-color: #FF3737;
 }
 
 /* Forms */
@@ -507,7 +507,7 @@ button[type="submit"] {
 }
 
 button[type="submit"]:hover {
-  background-color: #ff7f00;
+  background-color: #FF3737;
 }
 
 /* Tables */
@@ -580,7 +580,7 @@ th {
 }
 
 .close-button:hover {
-  background-color: #ff7f00;
+  background-color: #FF3737;
 }
 
 /* Accordion */
@@ -646,7 +646,7 @@ th {
 }
 
 .mobile-nav-toggle:hover {
-  background-color: #ff7f00;
+  background-color: #FF3737;
 }
 
 .mobile-nav ul {

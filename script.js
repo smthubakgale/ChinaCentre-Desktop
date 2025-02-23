@@ -277,7 +277,8 @@ if (page) {
     loadPage(page + '.html');
 } else {
     // Load the default page if no query parameter is provided
-    loadPage('register');
+    //loadPage('register' , '');
+    window.location.href = '?page=register&fill=screen' ;
 }
 
 function handleNavLinkClick(event , direct = false) {

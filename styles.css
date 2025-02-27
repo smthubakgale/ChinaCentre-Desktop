@@ -135,8 +135,7 @@ body:has(.modal[style*="block"]) {
     display: none;
   }
 .side-nav {
-  flex-basis: 250px;
-  flex-shrink: 0;
+  width: 250px; 
   background-color: #333333;
   padding: 1em;
   overflow-y: auto;

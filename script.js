@@ -67,6 +67,8 @@ function observeLinkTags(className = '', eventType = 'click', callback = () => {
 
 function handleNavLinkClick(event , direct = false) {
 
+  console.log(event , direct);
+  
   if(!direct){ event.preventDefault(); } 
 
   let target = event.target;

@@ -341,7 +341,7 @@ body:has(.modal[style*="block"]) {
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 1000;
     overflow-y:scroll; 
-    max-height:calc(100vh - 20px);
+    max-height:calc(100vh - 120px);
   }
     .side-nav nav{
       background-color: #EB1110;

@@ -1,1 +1,32 @@
-{"name":"China_Centre","version":"1.0.1","description":"Furniture Ecommerce Application","main":"src/main/main.js","scripts":{"start":"electron --icon=./logo.ico ."},"keywords":[],"author":"TevrocSoft","license":"ISC","dependencies":{"express":"^4.21.2"},"build":{"win":{"icon":"logo.ico"}},"electron-builder":{"nodeIntegration":true,"contextIsolation":false,"enableRemoteModule":true},"devDependencies":{"electron":"^34.2.0","electron-builder":"^25.1.8"}}
+{
+  "name": "China_Centre",
+  "version": "1.0.1",
+  "description": "Furniture Ecommerce Application",
+  "main": "src/main/main.js",
+  "scripts": {
+    "start": "electron --icon=./logo.ico ."
+  },
+  "keywords": [],
+  "author": "TevrocSoft",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.2",
+    "html-pdf": "^3.0.1"
+  },
+  "build": {
+    "win": {
+      "icon": "logo.ico",
+      "target": "nsis"
+    }
+  },
+  "electron-builder": {
+    "nodeIntegration": true,
+    "contextIsolation": false,
+    "enableRemoteModule": true
+  },
+  "devDependencies": {
+    "electron": "^34.2.0",
+    "electron-builder": "^25.1.8",
+    "electron-packager": "^17.1.2"
+  }
+}

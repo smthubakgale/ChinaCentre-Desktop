@@ -1,4 +1,8 @@
-const { app, BrowserWindow, Menu,ipcMain } = require('electron');
+const { app, BrowserWindow, Menu, session } = require('electron');
+const htmlPdf = require('html-pdf');
+const fs = require('fs');
+const path = require('path');
+
 let mainWindow;
 let expressPort;
 
@@ -31,7 +35,9 @@ function createWindow() {
       nodeIntegration: true,
       contextIsolation: false, // Add this
       enableRemoteModule: true, // Add this,
-      webSecurity: false // Add this
+      webSecurity: false , // Add this
+      allowPopups: true,
+	  nativeWindowOpen: true,
     },
     icon: 'https://smthubakgale.github.io/ChinaCentre/logo.png'
   });
@@ -40,31 +46,40 @@ function createWindow() {
   Menu.setApplicationMenu(null);
 
   mainWindow.loadURL('https://smthubakgale.github.io/ChinaCentre-Desktop/');
+  mainWindow.webContents.on('new-window', (event, url, frameName, disposition, options) => {
+	  event.preventDefault();
+	  const newWin = new BrowserWindow(options);
+	  newWin.loadURL(url);
+	});
+
   mainWindow.on('closed', function () {
     mainWindow = null;
-  });
-  
-  mainWindow.webContents.on('did-finish-load', () => 
-  {
-	  mainWindow.webContents.executeJavaScript(`
-	  window.addEventListener('message', (event) => {
-		if (event.data === 'print-init') {
-		  const printButton = document.getElementById('print-button');
-		  printButton.addEventListener('click', () => {
-			window.api.send('print-request');
-		  });
+  }); 
+
+  session.defaultSession.on('will-download', (event, item, webContents) => {
+	  item.on('done', (event, path) => {
+		console.log(`File downloaded to: ${item.savePath}`);
+		
+		if(item.savePath.indexOf(".html") != -1) {
+			const htmlPath = item.savePath;
+			const pdfPath = item.savePath.replace(".html" , ".pdf");
+
+			const html = fs.readFileSync(htmlPath, 'utf8');
+			const options = {
+			  format: 'A4',
+			  orientation: 'portrait',
+              timeout: 30000, // 30-second timeout
+			};
+
+			htmlPdf.create(html, options).toFile(pdfPath, (err) => {
+			  if (err) {
+				console.error(err);
+			  }
+			});
 		}
+		
 	  });
-	`);
-
-    mainWindow.webContents.send('print-init');
-  });
-
-  ipcMain.on('print-request', (event) => {
-    mainWindow.webContents.print({ silent: true, printBackground: true }, (success, failureReason) => {
-      if (!success) console.error(failureReason);
-    });
-  });
+	});
 
 }
 

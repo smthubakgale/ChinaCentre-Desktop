@@ -141,7 +141,7 @@ body:has(.modal[style*="block"]) {
   overflow-y: auto;
   box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.1);
   overflow-y:scroll; 
-  max-height:calc(100vh - 80px);
+  max-height:calc(100vh - 120px);
 }
 
 .side-nav .contact-link2 , .side-nav .about-link2{

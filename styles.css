@@ -32,12 +32,12 @@ body:has(.modal[style*="block"]) {
     color: #fff;
     font-size: 20px;
     text-align: center;
-    line-height: 60px;
+    line-height: 40px;
     cursor: pointer;
 }
 
 .config-icon i {
-    font-size: 24px;
+    font-size: 20px;
 }
 
 .modal {

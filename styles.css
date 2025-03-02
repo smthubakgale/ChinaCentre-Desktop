@@ -24,8 +24,8 @@ body:has(.modal[style*="block"]) {
 /* Modal */
 .config-icon {
     position: fixed;
-    top: calc(100vh - 80px);
-    left: calc(100vw - 80px);
+    top: calc(100vh - 40px);
+    left: calc(100vw - 20px);
     width: 40px;
     height: 40px;
     background-color: #333;

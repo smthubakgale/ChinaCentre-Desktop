@@ -23,9 +23,7 @@ body:has(.modal[style*="block"]) {
 
 /* Modal */
 .config-icon {
-    position: fixed;
-    top: calc(100vh - 40px);
-    left: calc(100vw - 20px);
+    position: fixed; 
     width: 40px;
     height: 40px;
     background-color: #333;
@@ -34,6 +32,9 @@ body:has(.modal[style*="block"]) {
     text-align: center;
     line-height: 40px;
     cursor: pointer;
+  
+    left:calc(100vw - 60px); 
+    top: calc(100vh - 60px);
 }
 
 .config-icon i {

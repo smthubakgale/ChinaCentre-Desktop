@@ -156,7 +156,7 @@ CREATE TABLE Product_Cart (
   user_no INT,
   product_no INT,
   quantity INT,
-  checkout_status TEXT CHECK (checkout_status IN ('Shopping', 'Paid')) DEFAULT 'Shopping',
+  checkout_status TEXT CHECK (checkout_status IN ('Shopping', 'Paid')) ,
   FOREIGN KEY (user_no) REFERENCES Users(idx),
   FOREIGN KEY (product_no) REFERENCES Products(idx)
 );
@@ -194,7 +194,7 @@ CREATE TABLE Checkout_Cart (
   user_no INT,
   product_no INT,
   quantity INT,
-  checkout_status TEXT CHECK (checkout_status IN ('Shopping', 'Paid')) DEFAULT 'Shopping',
+  checkout_status TEXT CHECK (checkout_status IN ('Shopping', 'Paid')) ,
   FOREIGN KEY (user_no) REFERENCES Users(idx),
   FOREIGN KEY (product_no) REFERENCES Products(idx)
 );

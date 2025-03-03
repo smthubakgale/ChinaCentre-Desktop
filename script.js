@@ -372,20 +372,25 @@ const alert = event.target.parentElement;
 alert.remove();
 }
 
-function init() {
-// Initialize modals
-modals.forEach(modal => {
-const closeButton = modal.querySelector('.close-button');
-closeButton.addEventListener('click', () => modal.style.display = 'none');
-});
-
-// Initialize tooltips
-const tooltips = document.querySelectorAll('.tooltip');
-tooltips.forEach(tooltip => {
-const trigger = tooltip.querySelector('.tooltip-trigger');
-trigger.addEventListener('mouseover', () => tooltip.classList.add('show'));
-trigger.addEventListener('mouseout', () => tooltip.classList.remove('show'));
-});
+function init() 
+{
+  // Initialize modals
+  modals.forEach(modal => {
+  const closeButton = modal.querySelector('.close-button');
+  
+    if(closeButton)
+    {
+      closeButton.addEventListener('click', () => modal.style.display = 'none');
+    }
+  });
+  
+  // Initialize tooltips
+  const tooltips = document.querySelectorAll('.tooltip');
+  tooltips.forEach(tooltip => {
+  const trigger = tooltip.querySelector('.tooltip-trigger');
+  trigger.addEventListener('mouseover', () => tooltip.classList.add('show'));
+  trigger.addEventListener('mouseout', () => tooltip.classList.remove('show'));
+  });
 }
 
 // Initialize

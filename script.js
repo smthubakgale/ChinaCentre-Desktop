@@ -1,3 +1,33 @@
+
+const cartBtn = document.querySelector('.cart-btn');
+const cartPopup = document.querySelector('.cart-popup');
+const cartClose = document.querySelector('.cart-close');
+
+// Cart Pop Up 
+cartBtn.addEventListener('click', () => {
+  const screenWidth = window.innerWidth;
+  const breakpoint = 768; // Adjust this value to your desired breakpoint
+
+  if (screenWidth >= breakpoint) {
+    cartPopup.classList.toggle("pop-show");
+  } else {
+    handleNavLinkClick(cartBtn, true);
+  }
+});
+
+cartClose.addEventListener('click', () => {
+  cartPopup.classList.remove("pop-show");
+});
+
+document.addEventListener('click', function(event) {
+  const cartPopup = document.querySelector('.cart-popup');
+  const cartContainer = document.querySelector('.cart-container');
+  
+  if (cartPopup.contains(event.target) && !cartContainer.contains(event.target)) {
+    cartPopup.classList.remove('pop-show');
+  }
+});
+
 // Modals 
 const configIcon = document.querySelector('.config-icon');
 const modal = document.querySelector('.modal');

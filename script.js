@@ -30,15 +30,15 @@ document.addEventListener('click', function(event) {
 
 // Modals 
 const configIcon = document.querySelector('.config-icon');
-const modal = document.querySelector('.modal');
+const modal0 = document.querySelector('.modal');
 
 configIcon.addEventListener('click', () => {
-    modal.style.display = 'block';
+    modal0.style.display = 'block';
 });
 
 window.addEventListener('click', (e) => {
     if (e.target === modal) {
-        modal.style.display = 'none';
+        modal0.style.display = 'none';
     }
 });
 // Add event listener to dropdown toggle
@@ -61,7 +61,7 @@ const sections = document.querySelectorAll('.section');
 const navLinks = document.querySelectorAll('.nav-link');
 const subNavTriggers = document.querySelectorAll('.dropdown');
 const subNavs = document.querySelectorAll('.sub-nav');
-const modals = document.querySelectorAll('.modal');
+const modals0 = document.querySelectorAll('.modal');
 const accordionTriggers = document.querySelectorAll('.accordion');
 const alertCloseButtons = document.querySelectorAll('.alert .close-button');
 const asideToggle = document.querySelector('.aside-toggle'); 
@@ -375,12 +375,12 @@ alert.remove();
 function init() 
 {
   // Initialize modals
-  modals.forEach(modal => {
-  const closeButton = modal.querySelector('.close-button');
+  modals0.forEach(modal0 => {
+  const closeButton = modal0.querySelector('.close-button');
   
     if(closeButton)
     {
-      closeButton.addEventListener('click', () => modal.style.display = 'none');
+      closeButton.addEventListener('click', () => modal0.style.display = 'none');
     }
   });
   

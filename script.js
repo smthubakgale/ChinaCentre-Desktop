@@ -335,7 +335,7 @@ window.getQueryParams = function (url) {
     queryParams[key] = value; 
   } 
   
-  return s;
+  return queryParams;
 }
 // Load the page dynamically based on the query parameter
 const page = getQueryParameter('page');

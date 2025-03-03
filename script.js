@@ -335,11 +335,11 @@ window.getQueryParams = function (url) {
     queryParams[key] = value; 
   } 
   
-  return queryParams;
+  return s;
 }
 // Load the page dynamically based on the query parameter
 const page = getQueryParameter('page');
-const fill = getQueryParameter('fill');
+var fill = getQueryParameter('fill');
 var queries = getQueryParameter('queries'); 
 
 const ur2 = "https://example.com" + ( (queries) ? '?' + atob(queries) : '');

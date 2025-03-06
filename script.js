@@ -356,7 +356,8 @@ if (page) {
     loadPage(page + '.html');
 } else {
     // Load the default page if no query parameter is provided 
-    window.location.href = '?page=register&fill=screen' ;
+    //window.location.href = '?page=register&fill=screen' ;
+     loadPage('home');
 }
 
 function handleNavLinkClick(event , direct = false) {

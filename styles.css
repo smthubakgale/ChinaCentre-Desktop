@@ -484,6 +484,7 @@ body:has(.modal[style*="block"]) {
   }
 .side-nav {
   width: 250px; 
+  min-width: 250px; 
   background-color: #333333;
   padding: 1em;
   overflow-y: auto;

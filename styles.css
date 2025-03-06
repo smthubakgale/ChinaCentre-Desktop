@@ -665,9 +665,7 @@ body:has(.modal[style*="block"]) {
 
 .flex-container0 {
   display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  justify-content: space-between;
+  flex-direction: row; 
 }
 
 /* Responsive Design */

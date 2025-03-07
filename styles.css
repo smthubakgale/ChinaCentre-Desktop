@@ -58,7 +58,7 @@ body:has(.modal[style*="display:block"]) {
 
 #developer .modal-content {
     background-color: #fff;
-    margin: 15% auto;
+    margin: 3% auto;
     padding: 20px;
     border: 1px solid #ddd;
     width: 600px; 

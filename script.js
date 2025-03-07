@@ -64,7 +64,7 @@ configIcon.addEventListener('click', () => {
 });
 
 window.addEventListener('click', (e) => {
-    if (e.target === modal) {
+    if (e.target === modal0) {
         modal0.style.display = 'none';
     }
 });

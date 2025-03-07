@@ -136,7 +136,7 @@ body:has(.modal[style*="display:block"]) {
 }
 
 #developer .login-button:hover {
-  background-color: #3e8e41;
+  background-color: #1F1F1F;
   color: #EB1110; 
 }
 

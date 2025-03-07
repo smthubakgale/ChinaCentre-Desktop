@@ -58,6 +58,7 @@ body:has(.modal[style*="block"]) {
     padding: 20px;
     border: 1px solid #ddd;
     width: 80%;
+    max-width: 400px;
 }
 
 .modal-content h2 {

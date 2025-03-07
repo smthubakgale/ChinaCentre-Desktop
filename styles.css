@@ -129,7 +129,7 @@ body:has(.modal[style*="display:block"]) {
   font-size: 16px;
   font-weight: bold;
   color: #ffffff;
-  background-color: #4CAF50;
+  background-color: #1F1F1F;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -137,6 +137,7 @@ body:has(.modal[style*="display:block"]) {
 
 #developer .login-button:hover {
   background-color: #3e8e41;
+  color: #EB1110; 
 }
 
 /* Navigation */

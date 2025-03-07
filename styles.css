@@ -52,7 +52,7 @@ body:has(.modal[style*="block"]) {
     z-index: 1;
 }
 
-.modal-content {
+#developer .modal-content {
     background-color: #fff;
     margin: 15% auto;
     padding: 20px;
@@ -61,17 +61,17 @@ body:has(.modal[style*="block"]) {
     max-width: 400px;
 }
 
-@media only screen and (max-width: 767px) { .modal-content {
+@media only screen and (max-width: 767px) { #developer .modal-content {
   width: 85vw;
   max-width: 85vw;
 }}
 
-.modal-content select {
+#developer .modal-content select {
     padding: 4px;
     border-radius: 3px;
 }
 
-.modal-content h2 {
+#developer .modal-content h2 {
     margin-top: 0;
 }
 /* Navigation */

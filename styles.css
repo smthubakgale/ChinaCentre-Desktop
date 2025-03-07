@@ -17,6 +17,10 @@ body:has(.modal[style*="block"]) {
   overflow: hidden;
 }
 
+body:has(.modal[style*="display:block"]) {
+  overflow: hidden;
+}
+
 .chevron-icon {
   float: right; 
 }

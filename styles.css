@@ -66,6 +66,11 @@ body:has(.modal[style*="block"]) {
   max-width: 85vw;
 }}
 
+.modal-content select {
+    padding: 4px;
+    border-radius: 3px;
+}
+
 .modal-content h2 {
     margin-top: 0;
 }

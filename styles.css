@@ -61,6 +61,11 @@ body:has(.modal[style*="block"]) {
     max-width: 400px;
 }
 
+@media only screen and (max-width: 767px) { .modal-content {
+  width: 85vw;
+  max-width: 85vw;
+}}
+
 .modal-content h2 {
     margin-top: 0;
 }

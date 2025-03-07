@@ -23,6 +23,7 @@ body:has(.modal[style*="display:block"]) {
 
 .chevron-icon {
   float: right; 
+  margin-top: 4px; 
 }
 
 /* Modal */
@@ -622,6 +623,7 @@ body:has(.modal[style*="display:block"]) {
 .side-nav .docs-nav label {
   cursor: pointer;
   color: white; 
+  width: 100%; 
 }
 
 .side-nav .docs-nav label:hover {

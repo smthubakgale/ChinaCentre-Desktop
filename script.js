@@ -85,7 +85,7 @@ const sideNav = document.querySelector('.side-nav');
 const docsNav = document.querySelector('.docs-nav');
 const mainContent = document.querySelector('.main-content'); 
 const sections = document.querySelectorAll('.section');
-const navLinks = document.querySelectorAll('.nav-link');
+const navLinks2 = document.querySelectorAll('.nav-link');
 const subNavTriggers = document.querySelectorAll('.dropdown');
 const subNavs = document.querySelectorAll('.sub-nav');
 const modals0 = document.querySelectorAll('.modal');
@@ -161,7 +161,7 @@ function handleNavLinkClick(event , direct = false) {
 }
 //
 // Add event listeners
-navLinks.forEach(link => link.addEventListener('click', handleNavLinkClick));
+navLinks2.forEach(link => link.addEventListener('click', handleNavLinkClick));
 observeLinkTags('nav-link', 'click', handleNavLinkClick);
 
 subNavTriggers.forEach(trigger => trigger.addEventListener('mouseover', handleSubNavTrigger));

@@ -12,12 +12,8 @@ body {
   color: #333;
   background-color: #f9f9f9; 
 }
-
-body:has(.modal[style*="block"]) {
-  overflow: hidden;
-}
-
-body:has(.modal[style*="display:block"]) {
+ 
+body:has(.modal.fade.show[style*="display:block"]) {
   overflow: hidden;
 }
 

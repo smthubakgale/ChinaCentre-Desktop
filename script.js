@@ -10,7 +10,7 @@ fetch(url)
     if (data.success && data.tables.length > 0) {
       const databaseList = document.querySelector('#database-list');
       databaseList.innerHTML = "";
-      databaseList.addEventListener('click', toggleCheckbox)
+      databaseList.addEventListener('click', toggleCheckbox2)
       const checkbox = document.createElement('input');
       checkbox.type = 'checkbox';
       checkbox.id = 'database';
@@ -46,6 +46,24 @@ fetch(url)
         }
     });
 });
+//
+function toggleCheckbox2(event) {
+  if (event.target.tagName === 'A') {
+    // Existing handleNavLinkClick code here
+  } else {
+    const checkbox = event.target.parentNode.querySelector('input[type="checkbox"]');
+    const label = event.target.parentNode.querySelector('label');
+    const chevronIcon = label.querySelector('.chevron-icon');
+
+    if (checkbox.checked) {
+      chevronIcon.classList.remove('fa-chevron-down');
+      chevronIcon.classList.add('fa-chevron-up');
+    } else {
+      chevronIcon.classList.remove('fa-chevron-up');
+      chevronIcon.classList.add('fa-chevron-down');
+    }
+  }
+}
 //:
 
 const loginBtn = document.querySelector('.login-btn');

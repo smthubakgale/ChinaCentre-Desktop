@@ -1,3 +1,53 @@
+//: 
+const url = d_config.url + `database/tables?session=${encodeURIComponent(session)}`;
+console.log(url);
+    
+fetch(url)
+.then((response) => response.json())
+.then((data) => {
+    console.log(data.success && data.tables.length > 0 , data);
+
+    if (data.success && data.tables.length > 0) {
+      const databaseList = document.querySelector('#database-list');
+      databaseList.innerHTML = "";
+      databaseList.addEventListener('click', toggleCheckbox)
+      const checkbox = document.createElement('input');
+      checkbox.type = 'checkbox';
+      checkbox.id = 'database';
+    
+      const label = document.createElement('label');
+      label.htmlFor = 'database';
+      label.innerHTML = 'Database <i class="chevron-icon fas fa-chevron-down" style="float:right"></i>';
+ 
+      const unorderedList = databaseList.createElement('ul');
+        
+      databaseList.prepend(unorderedList);
+      databaseList.prepend(label);
+      databaseList.prepend(checkbox);
+    
+    
+      data.tables.forEach((table) => {
+        const listItem = document.createElement("li");
+        const link = document.createElement("a");
+        link.href = "#database";
+        link.setAttribute('queries', `table=${table}`);
+        link.classList.add("nav-link");
+        link.innerHTML = `${table.replace(/_/g, ' ').replace(/\b\w/g, (l) => l.toUpperCase())} <i class="fas fa-chevron-right"></i>`;
+        listItem.appendChild(link);
+        unorderedList.appendChild(listItem);
+      });
+    }
+})
+.catch((error) => {
+  console.error(error);
+    document.querySelectorAll('.menu-list2 ul li').forEach((li) => {
+        if (li.innerHTML.trim() === '') {
+            li.remove();
+        }
+    });
+});
+//:
+
 const loginBtn = document.querySelector('.login-btn');
 const loginPopup = document.querySelector('.login-popup');
 const loginClose = document.querySelector('.login-close');

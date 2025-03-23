@@ -26,6 +26,10 @@ body:has(.modal[style*="display:block"]) {
   margin-top: 4px; 
 }
 
+.menu-list2 li i{
+  float:right;
+}
+
 /* Modal */
 .config-icon {
     position: fixed; 

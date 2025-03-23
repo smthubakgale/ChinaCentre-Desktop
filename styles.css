@@ -12,10 +12,6 @@ body {
   color: #333;
   background-color: #f9f9f9; 
 }
- 
-body:has(.modal.fade.show[style*="display:block"]) {
-  overflow: hidden;
-}
 
 .chevron-icon {
   float: right; 

@@ -224,7 +224,8 @@ function handleNavLinkClick(event , direct = false) {
   fill = fill || 'none';
   var queries = target.getAttribute('queries');
   queries = (queries) ? '&queries=' + btoa(queries) : '';
-  
+
+  alert("A"):
   window.location.href = '?page=' + targetSection + '&fill=' + fill + queries ;
 }
 //
@@ -254,7 +255,7 @@ function addSectionIdToJs(jsCode, sectionId) {
   });
 }
 
-function loadPage(pageUrl , queries) {
+function loadPage(pageUrl , queries , fills) {
   session_login(0 , ()=>{
       clearSections();
     
@@ -429,6 +430,7 @@ function renderFill()
 if (page) {
     loadPage(page + '.html');
 } else {
+    alert("B");
     // Load the default page if no query parameter is provided 
     window.location.href = '?page=dashboard&fill=none' ;
     //loadPage('home');
@@ -453,7 +455,8 @@ function handleNavLinkClick(event , direct = false) {
   fill = fill || 'none';
   var queries = target.getAttribute('queries');
   queries = (queries) ? '&queries=' + btoa(queries) : '';
-  
+
+  alert("C");
   window.location.href = '?page=' + targetSection + '&fill=' + fill + queries ;
 }
 

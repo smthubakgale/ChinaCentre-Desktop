@@ -416,10 +416,15 @@ window.queryParam = getQueryParams(ur2);
 
 console.log(window.queryParam);
 
-if(fill == "screen"){
+renderFill(fill);
+function renderFill()
+{
+  if(fill == "screen"){
    document.querySelector('.top-nav').style.display = 'none';
    document.querySelector('.side-nav').style.display = 'none';
+  }
 }
+
 
 if (page) {
     loadPage(page + '.html');

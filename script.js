@@ -420,7 +420,12 @@ console.log(window.queryParam);
 renderFill(fill);
 function renderFill()
 {
-  if(fill == "screen" && ["dashboard"].indexOf(page) == -1){
+  if(["dashboard"].includes(page))
+  {
+    document.querySelector('.top-nav').style.display = 'flex';
+    document.querySelector('.side-nav').style.display = 'block';
+  }
+  else if(fill == "screen"){
    document.querySelector('.top-nav').style.display = 'none';
    document.querySelector('.side-nav').style.display = 'none';
   }

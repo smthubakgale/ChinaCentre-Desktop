@@ -1,11 +1,11 @@
 //: 
 const url = d_config.url + `database/tables?session=${encodeURIComponent(session)}`;
-console.log(url);
+//console.log(url);
     
 fetch(url)
 .then((response) => response.json())
 .then((data) => {
-    console.log(data.success && data.tables.length > 0 , data);
+    //console.log(data.success && data.tables.length > 0 , data);
 
     if (data.success && data.tables.length > 0) {
       const databaseList = document.querySelector('#database-list');
@@ -205,7 +205,7 @@ function observeLinkTags(className = '', eventType = 'click', callback = () => {
 
 function handleNavLinkClick(event , direct = false) {
 
-  console.log(event , direct);
+  //console.log(event , direct);
   
   if(!direct){ event.preventDefault(); } 
 
@@ -414,7 +414,7 @@ var queries = getQueryParameter('queries');
 const ur2 = "https://example.com" + ( (queries) ? '?' + atob(queries) : '');
 window.queryParam = getQueryParams(ur2);
 
-console.log(window.queryParam);
+//console.log(window.queryParam);
 
 renderFill(fill);
 function renderFill()

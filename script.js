@@ -225,7 +225,6 @@ function handleNavLinkClick(event , direct = false) {
   var queries = target.getAttribute('queries');
   queries = (queries) ? '&queries=' + btoa(queries) : '';
 
-  alert("A");
   window.location.href = '?page=' + targetSection + '&fill=' + fill + queries ;
 }
 //
@@ -434,8 +433,7 @@ function renderFill()
 
 if (page) {
     loadPage(page + '.html');
-} else {
-    alert("B");
+} else { 
     // Load the default page if no query parameter is provided 
     window.location.href = '?page=dashboard&fill=none' ;
     //loadPage('home');
@@ -460,8 +458,7 @@ function handleNavLinkClick(event , direct = false) {
   fill = fill || 'none';
   var queries = target.getAttribute('queries');
   queries = (queries) ? '&queries=' + btoa(queries) : '';
-
-  alert("C");
+ 
   window.location.href = '?page=' + targetSection + '&fill=' + fill + queries ;
 }
 

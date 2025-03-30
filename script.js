@@ -225,7 +225,7 @@ function handleNavLinkClick(event , direct = false) {
   var queries = target.getAttribute('queries');
   queries = (queries) ? '&queries=' + btoa(queries) : '';
 
-  alert("A"):
+  alert("A");
   window.location.href = '?page=' + targetSection + '&fill=' + fill + queries ;
 }
 //

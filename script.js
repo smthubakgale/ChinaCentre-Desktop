@@ -420,7 +420,7 @@ console.log(window.queryParam);
 renderFill(fill);
 function renderFill()
 {
-  if(fill == "screen"){
+  if(fill == "screen" && ["dashboard"].indexOf(page) == -1){
    document.querySelector('.top-nav').style.display = 'none';
    document.querySelector('.side-nav').style.display = 'none';
   }

@@ -291,6 +291,7 @@ function loadPage(pageUrl , queries , fills) {
         try{
             doc.querySelectorAll(".design img").forEach(img => img.removeAttribute("src"));
             doc.querySelectorAll(".design").forEach(elem => elem.remove()); 
+            doc.querySelectorAll(".blanks").forEach(elem => {elem.style.opacity = 0;}); 
         }catch{}
         const links = doc.querySelectorAll('link');
         const styles = doc.querySelectorAll('style');

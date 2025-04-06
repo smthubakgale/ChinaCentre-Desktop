@@ -379,8 +379,13 @@ function loadPage(pageUrl , queries , fills) {
                   const modifiedJsCode = addSectionIdToJs(jsCode, sectionId);  
                   const modifiedScript = document.createElement('script');
                   modifiedScript.textContent = modifiedJsCode;
-                  section.appendChild(modifiedScript);
-                  window["dscript"].push(modifiedScript);
+                  try{
+                      section.appendChild(modifiedScript);
+                      window["dscript"].push(modifiedScript);
+                  }
+                  catch(err){
+                      console.error(err);  
+                  }
                 })
               .catch(error => console.error(`Error loading JS: ${error}`));
               }

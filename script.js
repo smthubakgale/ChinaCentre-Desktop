@@ -360,13 +360,8 @@ function loadPage(pageUrl , queries , fills) {
             const modifiedJsCode = addSectionIdToJs(jsCode, sectionId); 
             const modifiedScript = document.createElement('script');
             modifiedScript.textContent = modifiedJsCode;
-              try{
-                section.appendChild(modifiedScript);
-                window["dscript"].push(modifiedScript);
-              }
-              catch(err){
-                  console.error(err);
-              }
+            section.appendChild(modifiedScript);
+            window["dscript"].push(modifiedScript);
           }
           else if(src)
           { 
@@ -535,4 +530,3 @@ document.addEventListener('click', (event) => {
 
 // Check if mobile device
 const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-

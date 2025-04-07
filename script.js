@@ -255,7 +255,7 @@ function addSectionIdToJs(jsCode, sectionId) {
 }
 
 function loadPage(pageUrl , queries , fills) {
-  consoel.log("Start");
+  console.log("Start");
   session_login(0 , ()=>{
       console.log("Finish");
       clearSections();
